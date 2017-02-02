@@ -2,6 +2,6 @@
 
 $test = 'test';
 
-echo 'Bonjour';
+echo 'Bonjour à tous';
 
 ?>
