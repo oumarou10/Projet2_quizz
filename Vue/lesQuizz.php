@@ -12,14 +12,14 @@
     <p> Voici les questions </p>
 
      <?php
-        foreach ($getQst as $getQst)
+        foreach ($questions as $question)
         {
       ?>
-    <form action="" method="post">
-       <p> <? echo $getQst['questions_id'] . ')' .$getQst['question'];?> </p>
+    <form action="../" method="post">
+       <p> <? echo $question['questions_id'] . ')' .$question['question'];?> </p>
 
-        <input type="radio" name="<?echo$getQst['questions_id'];?>" id="<? echo $getQst['id'];?>">
-        <label for="<?echo$getQst['id'];?>"> <?echo$getQst['reponse'];?></label>
+        <input type="radio" name="<?echo$question['questions_id'];?>" id="<? echo $question['id'];?>">
+        <label for="<?echo$question['id'];?>"> <?echo$question['reponse'];?></label>
         <?php
         }
         ?>

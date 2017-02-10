@@ -7,7 +7,7 @@ if (!empty($_GET['lieu'])) {
 }
 
 else{
-    $lieu = 'index';
+    $lieu = 'accueil';
 }
 
 $path = 'Controller/'.$lieu.'.php';
