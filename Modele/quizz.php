@@ -6,7 +6,7 @@ function getQuizz()
 {
     global $bdd;
 
-    $requete = $bdd->query('SELECT * FROM quizz');
+    $requete = $bdd->query('SELECT * FROM quizz'); //
 
     $allQuizz = $requete->fetchAll();
 
@@ -26,8 +26,20 @@ function getQst($id){
 
 }
 
-if (isset($_POST['envoyer'])){
+function getBonnesReponses($id){
+    global $bdd;
 
+    $req3 = $bdd->prepare('SELECT * FROM reponses AS r INNER JOIN questions AS q ON r.questions_id = q.id INNER JOIN quizz ON quizz.id = q.quizz_id WHERE type = 1 AND quizz.id = :id ');
+    $req3->bindParam(':id', $id, PDO::PARAM_INT);
+    $req3->execute();
+
+    $getGoodAns = $req3->fetchAll();
+    return $getGoodAns;
+
+    if (isset($_GET['envoyer'])){
+
+    }
 }
+
 
 ?>

@@ -15,7 +15,7 @@
         foreach ($questions as $question)
         {
       ?>
-    <form action="../" method="post">
+    <form action="" method="GET">
        <p> <? echo $question['questions_id'] . ')' .$question['question'];?> </p>
 
         <input type="radio" name="<?echo$question['questions_id'];?>" id="<? echo $question['id'];?>">
@@ -23,6 +23,8 @@
         <?php
         }
         ?>
+        <input type="hidden" name="lieu" value="traitement">
+        <input type="hidden" name="quizz_id" value="<?echo $_GET['id'];?>">
         <div>
             <input type="submit">
         </div>
