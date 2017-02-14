@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <title>Quizz Projet</title>
-</head>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Quizz Projet</title>
+    </head>
 
-<body>
+    <body>
         <h1>Les questions</h1>
-<?php
 
-
-
-          for($i = 0;$i < $nbQst ; $i++)
-{
-?>
-        <form action="?lieu=traitement&quizz_id=<?echo$_GET['id'];?>" method="POST">
-
-            <p> <?echo $i+1 . ')' . $questions[$i]['question']; ?> </p>
-
-            <input type="radio" name="question<?echo$i;?>" id="question<?echo$i;?>" value="<?echo$questions[$i]['reponse'];?>">
-            <label for="question<?echo$i;?>">  <?echo$questions[$i]['reponse'];?></label>
-
+        <form action="?lieu=traitement&quizz_id=<?= $_GET['id']; ?>" method="POST">
             <?php
+            $lastQuestionId = -1;
+            $i = 0;
+
+            foreach ($questions as $question) {
+                if ($lastQuestionId != $question['question_id']) {
+                    $i++;
+
+                    ?>
+                    <p> <?= $i ?>) <?= $question['question'] ?> </p>
+                    <?php
+                }
+                ?>
+
+                <input type="radio" name="question<?= $i ?>" id="reponse<?= $question['reponse_id'] ?>"
+                       value="<?= $question['reponse_id'] ?>">
+                <label for="reponse<?= $question['reponse_id'] ?>">  <?= $question['reponse'] ?></label>
+
+                <?php
+
+                $lastQuestionId = $question['question_id'];
             }
-        ?>
+            ?>
 
-        <div>
-            <input type="submit" name="envoyer" value="envoyer">
-        </div>
+            <div>
+                <button type="submit">Envoyer</button>
+            </div>
 
-    </form>
+        </form>
 
-</body>
+    </body>
 </html>

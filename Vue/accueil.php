@@ -13,11 +13,12 @@
 
  <?php
 
-  foreach ($allQuiz as $allQuiz)
+
+  foreach ($allQuiz as $quiz)
   {
    ?>
       <div>
-          <? echo $allQuiz['titre']; ?> <a href="?lieu=lesQuizz&&id=<?echo$allQuiz['id'];?>"> ici </a>
+          <?= $quiz['titre']; ?> <a href="?lieu=lesQuizz&&id=<?= $quiz['quizz_id']; ?>"> ici </a>
       </div>
   <?php
     }

@@ -4,8 +4,6 @@ require_once 'Modele/quizz.php';
 
 $getGoodAns = getBonnesReponses($_GET['quizz_id']);
 
-
-    $afficherReponse = afficherReponses();
-
+var_dump($_POST);
 
 require_once 'Vue/traitement.php';
