@@ -5,8 +5,6 @@
     <title>Quizz Projet</title>
 </head>
 
-
-
 <body>
 
 	<h1>Bonjour et bienvenue sur mon quizz! </h1>
@@ -18,10 +16,9 @@
   foreach ($allQuiz as $allQuiz)
   {
    ?>
-   		<div>
-			<? echo $allQuiz['titre']; ?> <a href="?lieu=lesQuizz&&id=<?echo$allQuiz['id'];?><br>"> ici </a>
-		</div>
-
+      <div>
+          <? echo $allQuiz['titre']; ?> <a href="?lieu=lesQuizz&&id=<?echo$allQuiz['id'];?>"> ici </a>
+      </div>
   <?php
     }
  ?>

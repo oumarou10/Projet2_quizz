@@ -12,6 +12,7 @@
         echo $goodRep['reponse'] .'</br>';
     }
 
+    print $afficherReponse;
     ?>
 </body>
 </html>

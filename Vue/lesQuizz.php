@@ -6,28 +6,29 @@
 </head>
 
 <body>
+        <h1>Les questions</h1>
+<?php
 
-    <h1>Les questions </h1>
 
-    <p> Voici les questions </p>
 
-     <?php
-        foreach ($questions as $question)
-        {
-      ?>
-    <form action="" method="GET">
-       <p> <? echo $question['questions_id'] . ')' .$question['question'];?> </p>
+          for($i = 0;$i < $nbQst ; $i++)
+{
+?>
+        <form action="?lieu=traitement&quizz_id=<?echo$_GET['id'];?>" method="POST">
 
-        <input type="radio" name="<?echo$question['questions_id'];?>" id="<? echo $question['id'];?>">
-        <label for="<?echo$question['id'];?>"> <?echo$question['reponse'];?></label>
-        <?php
-        }
+            <p> <?echo $i+1 . ')' . $questions[$i]['question']; ?> </p>
+
+            <input type="radio" name="question<?echo$i;?>" id="question<?echo$i;?>" value="<?echo$questions[$i]['reponse'];?>">
+            <label for="question<?echo$i;?>">  <?echo$questions[$i]['reponse'];?></label>
+
+            <?php
+            }
         ?>
-        <input type="hidden" name="lieu" value="traitement">
-        <input type="hidden" name="quizz_id" value="<?echo $_GET['id'];?>">
+
         <div>
-            <input type="submit">
+            <input type="submit" name="envoyer" value="envoyer">
         </div>
+
     </form>
 
 </body>
