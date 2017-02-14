@@ -1,39 +1,49 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.5.2
+-- http://www.phpmyadmin.net
 --
--- Host: localhost:8889
--- Generation Time: Feb 14, 2017 at 07:52 PM
--- Server version: 5.6.33
--- PHP Version: 7.0.12
+-- Client :  127.0.0.1
+-- Généré le :  Mar 14 Février 2017 à 20:03
+-- Version du serveur :  5.7.9
+-- Version de PHP :  7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
--- Database: `quizz`
+-- Base de données :  `quizz`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `questions`
+-- Structure de la table `questions`
 --
 
-CREATE TABLE `questions` (
-  `id` int(50) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `questions`;
+CREATE TABLE IF NOT EXISTS `questions` (
+  `question_id` int(50) UNSIGNED NOT NULL AUTO_INCREMENT,
   `question` text COLLATE utf8_bin NOT NULL,
-  `quizz_id` int(11) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `quizz_id` int(11) UNSIGNED NOT NULL,
+  PRIMARY KEY (`question_id`),
+  UNIQUE KEY `index_uni_question` (`question`(255)),
+  KEY `fk_quizz_id` (`quizz_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `questions`
+-- Contenu de la table `questions`
 --
 
-INSERT INTO `questions` (`id`, `question`, `quizz_id`) VALUES
+INSERT INTO `questions` (`question_id`, `question`, `quizz_id`) VALUES
 (1, 'Dans quelle ville italienne se trouve la tour Pirelli ?', 1),
 (2, 'Dans quelle ville se trouve la Statue de la Liberté ?', 1),
-(3, 'Dans quelle ville en Côte d\'ivoire se trouve la grande Basilique ?\n', 1),
+(3, 'Dans quelle ville en Côte d''ivoire se trouve la grande Basilique ?\n', 1),
 (10, 'Quelle est la forme de l’Italie ?', 1),
 (11, 'Quelle est la capitale du Mali ?', 1),
 (12, 'Dans quelle ville se trouve la Tour Eiffel ?', 1),
@@ -52,19 +62,21 @@ INSERT INTO `questions` (`id`, `question`, `quizz_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `quizz`
+-- Structure de la table `quizz`
 --
 
-CREATE TABLE `quizz` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `titre` varchar(150) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+DROP TABLE IF EXISTS `quizz`;
+CREATE TABLE IF NOT EXISTS `quizz` (
+  `quizz_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `titre` varchar(150) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`quizz_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `quizz`
+-- Contenu de la table `quizz`
 --
 
-INSERT INTO `quizz` (`id`, `titre`) VALUES
+INSERT INTO `quizz` (`quizz_id`, `titre`) VALUES
 (1, 'Quizz Géographie'),
 (2, 'Quizz Football Euro Sport 2016'),
 (3, 'Quizz Olympique de Marseille');
@@ -72,21 +84,24 @@ INSERT INTO `quizz` (`id`, `titre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reponses`
+-- Structure de la table `reponses`
 --
 
-CREATE TABLE `reponses` (
-  `id` int(11) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `reponses`;
+CREATE TABLE IF NOT EXISTS `reponses` (
+  `reponse_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `reponse` text COLLATE utf8_bin NOT NULL,
   `type` tinyint(1) NOT NULL DEFAULT '0',
-  `questions_id` int(11) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `questions_id` int(11) UNSIGNED NOT NULL,
+  PRIMARY KEY (`reponse_id`),
+  UNIQUE KEY `index_uni_reponse` (`reponse`(255))
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `reponses`
+-- Contenu de la table `reponses`
 --
 
-INSERT INTO `reponses` (`id`, `reponse`, `type`, `questions_id`) VALUES
+INSERT INTO `reponses` (`reponse_id`, `reponse`, `type`, `questions_id`) VALUES
 (1, 'Venise', 0, 1),
 (2, 'Florence', 1, 1),
 (3, 'New-York', 1, 2),
@@ -123,55 +138,15 @@ INSERT INTO `reponses` (`id`, `reponse`, `type`, `questions_id`) VALUES
 (40, 'Didier Drogba', 1, 28);
 
 --
--- Indexes for dumped tables
+-- Contraintes pour les tables exportées
 --
 
 --
--- Indexes for table `questions`
+-- Contraintes pour la table `questions`
 --
 ALTER TABLE `questions`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `index_uni_question` (`question`(255)),
-  ADD KEY `fk_quizz_id` (`quizz_id`);
+  ADD CONSTRAINT `fk_quizz_id` FOREIGN KEY (`quizz_id`) REFERENCES `quizz` (`quizz_id`);
 
---
--- Indexes for table `quizz`
---
-ALTER TABLE `quizz`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `reponses`
---
-ALTER TABLE `reponses`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `index_uni_reponse` (`reponse`(255));
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `questions`
---
-ALTER TABLE `questions`
-  MODIFY `id` int(50) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
---
--- AUTO_INCREMENT for table `quizz`
---
-ALTER TABLE `quizz`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `reponses`
---
-ALTER TABLE `reponses`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `questions`
---
-ALTER TABLE `questions`
-  ADD CONSTRAINT `fk_quizz_id` FOREIGN KEY (`quizz_id`) REFERENCES `quizz` (`id`);
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
