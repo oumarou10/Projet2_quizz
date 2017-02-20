@@ -2,6 +2,10 @@
 
 require_once 'Modele/quizz.php';
 
-$questions = getQst($_GET['id']);
+if (isset($_GET['id'])){
+    $quizzId = (int) $_GET['id'];
+}
+
+$questions = getQst($quizzId);
 
 require_once 'Vue/lesQuizz.php';

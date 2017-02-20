@@ -30,7 +30,11 @@ function getReponses($id) {
     global $bdd;
 
     $req3 = $bdd->prepare(
-        'SELECT r.reponse, q.quizz_id FROM reponses AS r INNER JOIN questions AS q ON r.questions_id = q.id INNER JOIN quizz ON quizz.quizz_id = q.quizz_id WHERE quizz.id = :id '
+        'SELECT r.reponse_id, r.reponse, q.quizz_id
+        FROM reponses r 
+        INNER JOIN questions q ON r.questions_id = q.question_id 
+        INNER JOIN quizz ON quizz.quizz_id = q.quizz_id 
+        WHERE type = 1 AND q.quizz_id = :id'
     );
     $req3->bindParam(':id', $id, PDO::PARAM_INT);
     $req3->execute();
@@ -41,17 +45,35 @@ function getReponses($id) {
 
 }
 
+function getNbQst($id){
+    global $bdd;
+
+    $req = $bdd->prepare(
+        'SELECT COUNT(question) AS nbQst FROM questions WHERE quizz_id = :id'
+    );
+    $req->bindParam(':id', $id,PDO::PARAM_INT);
+    $req->execute();
+
+    $nbQst = $req->fetch();
+
+    return $nbQst['nbQst'];
+}
+
 
 function getBonnesReponses($id) {
     global $bdd;
 
-    $req3 = $bdd->prepare(
-        'SELECT * FROM reponses AS r INNER JOIN questions AS q ON r.questions_id = q.question_id INNER JOIN quizz ON quizz.quizz_id = q.quizz_id WHERE type = 1 AND quizz.quizz_id = :id '
+    $req = $bdd->prepare(
+        'SELECT * 
+         FROM reponses AS r 
+         INNER JOIN questions AS q ON r.questions_id = q.question_id 
+         INNER JOIN quizz ON quizz.quizz_id = q.quizz_id 
+         WHERE type = 1 AND quizz.quizz_id = :id '
     );
-    $req3->bindParam(':id', $id, PDO::PARAM_INT);
-    $req3->execute();
+    $req->bindParam(':id', $id, PDO::PARAM_INT);
+    $req->execute();
 
-    $getGoodAns = $req3->fetchAll();
+    $getGoodAns = $req->fetchAll();
 
     return $getGoodAns;
 

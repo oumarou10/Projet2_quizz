@@ -8,7 +8,7 @@
     <body>
         <h1>Les questions</h1>
 
-        <form action="?lieu=traitement&quizz_id=<?= $_GET['id']; ?>" method="POST">
+        <form action="?lieu=traitement&id=<?= $_GET['id']; ?>" method="POST">
             <?php
             $lastQuestionId = -1;
             $i = 0;
@@ -24,17 +24,16 @@
                 ?>
 
                 <input type="radio" name="question<?= $i ?>" id="reponse<?= $question['reponse_id'] ?>"
-                       value="<?= $question['reponse_id'] ?>">
+                       value="<?= $question['reponse'] ?>">
                 <label for="reponse<?= $question['reponse_id'] ?>">  <?= $question['reponse'] ?></label>
 
                 <?php
-
                 $lastQuestionId = $question['question_id'];
             }
             ?>
 
             <div>
-                <button type="submit">Envoyer</button>
+                <input type="submit" value="envoyer">
             </div>
 
         </form>
