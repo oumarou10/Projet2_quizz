@@ -8,17 +8,14 @@
 
     <?php
 
-    for ($i = 1; $i <= $nbQst;$i++){
-        if (isset($_POST['envoyer'])){
-            if (!empty($_POST['question'.$i])){
-                $reponse.$i = $_POST['question'.$i];
-                echo $reponse.$i;
-             }
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        for ($i = 1; $i <= $nbQst;$i++){
+            if(isset($_POST['question'.$i])){
+                echo 'ta reponse est '. $_POST['question'.$i];
+            }
         }
     }
-
-    echo $_POST['question1'];
-
+    var_dump($questions);
     ?>
 
     </body>

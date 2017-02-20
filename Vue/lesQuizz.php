@@ -33,7 +33,7 @@
             ?>
 
             <div>
-                <input type="submit" value="envoyer">
+                <button type="submit" name="envoyer"> Envoyer</button>
             </div>
 
         </form>
