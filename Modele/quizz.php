@@ -64,7 +64,7 @@ function getBonnesReponses($id) {
     global $bdd;
 
     $req = $bdd->prepare(
-        'SELECT * 
+        'SELECT reponse 
          FROM reponses AS r 
          INNER JOIN questions AS q ON r.questions_id = q.question_id 
          INNER JOIN quizz ON quizz.quizz_id = q.quizz_id 
@@ -78,3 +78,5 @@ function getBonnesReponses($id) {
     return $getGoodAns;
 
 }
+
+

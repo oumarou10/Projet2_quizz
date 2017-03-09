@@ -18,7 +18,7 @@
   {
    ?>
       <div>
-          <?= $quiz['titre']; ?> <a href="?lieu=lesQuizz&&id=<?= $quiz['quizz_id']; ?>"> ici </a>
+          <?= $quiz['titre']; ?> <a href="?action=lesQuizz&&id=<?= $quiz['quizz_id']; ?>"> ici </a>
       </div>
   <?php
     }

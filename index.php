@@ -3,13 +3,13 @@
 require_once 'Exception/NotFoundException.php';
 require_once 'Modele/connexion.php';
 
-if (!empty($_GET['lieu'])) {
-    $lieu = $_GET['lieu'];
+if (!empty($_GET['action'])) {
+    $action = $_GET['action'];
 } else {
-    $lieu = 'accueil';
+    $action = 'accueil';
 }
 
-$path = 'Controller/'.$lieu.'.php';
+$path = 'Controller/'.$action.'.php';
 
 try {
     if (!file_exists($path)) {

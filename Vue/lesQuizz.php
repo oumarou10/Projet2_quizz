@@ -8,7 +8,7 @@
     <body>
         <h1>Les questions</h1>
 
-        <form action="?lieu=traitement&id=<?= $_GET['id']; ?>" method="POST">
+        <form action="?action=traitement&id=<?= $_GET['id']; ?>" method="POST">
             <?php
             $lastQuestionId = -1;
             $i = 0;
