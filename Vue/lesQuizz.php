@@ -10,7 +10,7 @@
 
         <form action="?action=traitement&id=<?= $_GET['id']; ?>" method="POST">
             <?php
-            $lastQuestionId = -1;
+            $lastQuestionId = -5;
             $i = 0;
 
             foreach ($questions as $question) {

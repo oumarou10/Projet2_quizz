@@ -34,42 +34,19 @@
                 }
             }
         }
-        foreach ($reponsesSaisies as $reponse)
-        {
-            if (in_array($reponse,$bonnesReponses))
-            {
-                $resultatQuizz++;
-                echo $resultatQuizz;
-            }
-        }
     }
 
-    ?>
+    for ($i = 0;$i < sizeof($getGoodAns);$i++)
+    {
+        $j = $i + 1;
 
+        if ($reponsesSaisies['question'.$j] == $getGoodAns[$i]['reponse'])
+        {
+            $resultatQuizz++;
+        }
+    }
+    $average = ($resultatQuizz / $nbQst) * 100;
+    ?>
+    <h4> Ton score est de <?=$average?> %</h4>
     </body>
 </html>
-
-<!--  "<pre>";
-        print_r($reponsesSaisies);
-        echo "</pre>";
-
-echo "<pre>";
-        print_r($getGoodAns);
-        echo "</pre>";
-
-          /*echo
-
-   foreach ($reponsesSaisies[0] as $reponse){
-        if (in_array($reponse,$getGoodAns)){
-            $resultat++;
-            echo 'tu as choisi : ' .$reponse. ' cest une bonne réponse : ton résultat est de : '.$resultat. '<br>';
-        }
-
-        else{
-            echo 'tu as choisi :'.$reponse . '</br>';
-        }
-    }*/
-
-
-        */
-

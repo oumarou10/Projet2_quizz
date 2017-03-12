@@ -11,10 +11,6 @@ if (isset($_GET['id'])){
 
 }
 
-$bonnesReponses = []; // Création du tableau qui contiendra les bonnes réponses
-$bonnesReponses = $getGoodAns;
-var_dump($bonnesReponses);
-
 $errors = []; // On crée un tableau vide qui contiendra les erreurs
 
 for ($i = 1; $i <= $nbQst;$i++)
@@ -29,8 +25,6 @@ for ($i = 1; $i <= $nbQst;$i++)
 }
 $reponsesSaisies = [];
 $reponsesSaisies = $_POST;
-
-var_dump($reponsesSaisies);
 
 $resultatQuizz = 0;
 

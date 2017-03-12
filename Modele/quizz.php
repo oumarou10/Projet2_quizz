@@ -78,5 +78,3 @@ function getBonnesReponses($id) {
     return $getGoodAns;
 
 }
-
-
