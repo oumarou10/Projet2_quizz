@@ -18,7 +18,7 @@
                     $i++;
 
                     ?>
-                    <p> <?= $i ?>) <?= $question['question'] ?> </p>
+                    <p> <strong><?= $i ?>) <?= $question['question'] ?></strong>  </p>
                     <?php
                 }
                 ?>

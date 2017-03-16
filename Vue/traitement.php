@@ -8,34 +8,6 @@
 
     <?php
 
-   /* if ($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-        if (!empty($errors))
-        {
-            foreach ($errors as $error)
-            {
-                echo $error . '</br>';
-            }
-            for ($i = 1; $i <= $nbQst;$i++)
-            {
-                if (isset($_POST['question' . $i]))
-                {
-                    echo ' Ta reponse à la question '.$i.' est : ' . $_POST['question' . $i] . '</br></br>';
-                }
-            }
-        }
-        else
-        {
-            for ($i = 1; $i <= $nbQst;$i++)
-            {
-                if (isset($_POST['question' . $i]))
-                {
-                    echo ' Ta reponse à la question '.$i.' est : ' . $_POST['question' . $i] . '</br>';
-                }
-            }
-        }
-    }*/
-
     for ($i = 0;$i < sizeof($getGoodAns);$i++)
     {
         $j = $i + 1;
@@ -56,16 +28,18 @@
     {
         if ($lastQId != $question['question_id'])
         {
-            echo $j .')'. $question['question'] .'</br></br>';
-            if (isset($_POST['question' . $j]) AND isset($reponsesSaisies['question' . $j]))
+            echo '<strong>'. $j .')'. $question['question'] .'</strong> </br></br>';
+            if (isset($reponsesSaisies['question' . $j]))
             {
                 if ($reponsesSaisies['question' . $j] == $getGoodAns[$i]['reponse'])
                 {
-                    echo 'Tu as bien répondu : ' . $reponsesSaisies['question' . $j] . ' cest une bonne reponse </br></br>';
+                    echo '<font color="green"> Tu as bien répondu : ' . $reponsesSaisies['question' . $j] . ' </font> </br></br>';
+
                 }
                 else
                 {
-                    echo  'Tu as mal répondu : ' . $reponsesSaisies['question' . $j] . '</br></br>';
+                    echo  '<font color="red">Tu as mal répondu : ' . $reponsesSaisies['question' . $j] . '</font> </br></br>';
+                    echo 'La bonne réponse est :'. $getGoodAns[$i]['reponse'].'</br></br>';
                 }
 
             }
@@ -83,6 +57,6 @@
     ?>
 
 
-    <h4> Ton score est de <?=ceil($average)?> %</h4>
+    <h3> Ton score est de <?=ceil($average)?> %</h3>
     </body>
 </html>
