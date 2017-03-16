@@ -9,6 +9,8 @@ if (isset($_GET['id'])){
 
     $nbQst = getNbQst($quizzId);
 
+    $questions = getQst($quizzId);
+
 }
 
 $errors = []; // On crée un tableau vide qui contiendra les erreurs
