@@ -64,11 +64,12 @@ function getBonnesReponses($id) {
     global $bdd;
 
     $req = $bdd->prepare(
-        'SELECT reponse 
+        'SELECT GROUP_CONCAT(reponse) AS reponse
          FROM reponses AS r 
          INNER JOIN questions AS q ON r.questions_id = q.question_id 
          INNER JOIN quizz ON quizz.quizz_id = q.quizz_id 
-         WHERE type = 1 AND quizz.quizz_id = :id '
+         WHERE type = 1 AND quizz.quizz_id = :id 
+         group by q.question_id'
     );
     $req->bindParam(':id', $id, PDO::PARAM_INT);
     $req->execute();

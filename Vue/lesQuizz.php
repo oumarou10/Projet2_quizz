@@ -21,13 +21,27 @@
                     <p> <strong><?= $i ?>) <?= $question['question'] ?></strong>  </p>
                     <?php
                 }
-                ?>
 
-                <input type="radio" name="question<?= $i ?>" id="reponse<?= $question['reponse_id'] ?>"
-                       value="<?= $question['reponse'] ?>">
-                <label for="reponse<?= $question['reponse_id'] ?>">  <?= $question['reponse'] ?></label>
+                if ($question['question_type'] == 0) {
 
+                    ?>
+
+                    <input type="radio" name="question<?= $i ?>" id="reponse<?= $question['reponse_id'] ?>"
+                           value="<?= $question['reponse'] ?>">
+                    <label for="reponse<?= $question['reponse_id'] ?>">  <?= $question['reponse'] ?></label>
+
+                    <?php
+                }
+
+                else
+                    {
+                    ?>
+                    <input type="checkbox" name="question<?= $i ?>" id="reponse<?= $question['reponse_id'] ?>"
+                           value="<?= $question['reponse'] ?>">
+                    <label for="reponse<?= $question['reponse_id'] ?>">  <?= $question['reponse'] ?></label>
                 <?php
+                    }
+
                 $lastQuestionId = $question['question_id'];
             }
             ?>
