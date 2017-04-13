@@ -36,7 +36,7 @@
                 else
                     {
                     ?>
-                    <input type="checkbox" name="question<?= $i ?>" id="reponse<?= $question['reponse_id'] ?>"
+                    <input type="checkbox" name="question<?= $i ?>[]" id="reponse<?= $question['reponse_id'] ?>"
                            value="<?= $question['reponse'] ?>">
                     <label for="reponse<?= $question['reponse_id'] ?>">  <?= $question['reponse'] ?></label>
                 <?php

@@ -7,7 +7,10 @@
 
 <body>
 
-	<h1>Bonjour et bienvenue sur mon quizz! </h1>
+    <div id="wrapper" style="text-align: center">
+
+
+	<h1 style="text-align: center">Bonjour et bienvenue sur mon quizz! </h1>
 
 	<p> Ceci est mon premier quizz alors <mark>soyez indulgents</mark> s'il vous plaît,j'apprends comment cela marche.</p>
 
@@ -18,11 +21,19 @@
   {
    ?>
       <div>
-          <?= $quiz['titre']; ?> <a href="?action=lesQuizz&&id=<?= $quiz['quizz_id']; ?>"> ici </a>
+          <h2><?= $quiz['titre']; ?> <a href="?action=lesQuizz&&id=<?= $quiz['quizz_id']; ?>"> ici </a> </h2>
       </div>
   <?php
     }
  ?>
+
+        <footer style="background:darkred;">
+
+            <p style="color: aliceblue;"> Copyright © 2017. Tous droits réservés. </p>
+
+        </footer>
+
+    </div>
 
 </form>
 </body>

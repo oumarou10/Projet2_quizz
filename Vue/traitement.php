@@ -13,6 +13,10 @@
         $j = $i + 1;
         if (isset($getGoodAns[$i]['reponse']) AND isset($reponsesSaisies['question'.$j]))
         {
+            if(is_array($reponsesSaisies['question'.$j]))
+            {
+                $reponsesSaisies['question'.$j] = implode(",", $reponsesSaisies['question'.$j]);
+            }
             if ($getGoodAns[$i]['reponse'] == $reponsesSaisies['question'.$j])
             {
                 $resultatQuizz++;
@@ -31,6 +35,11 @@
             echo '<strong>'. $j .')'. $question['question'] .'</strong> </br></br>';
             if (isset($reponsesSaisies['question' . $j]))
             {
+                if(is_array($reponsesSaisies['question'.$j]))
+                {
+                    $reponsesSaisies['question'.$j] = implode(',', $reponsesSaisies['question'.$j]);
+
+                }
                 if ($reponsesSaisies['question' . $j] == $getGoodAns[$i]['reponse'])
                 {
                     echo '<font color="green"> Tu as bien répondu : ' . $reponsesSaisies['question' . $j] . ' </font> </br></br>';
