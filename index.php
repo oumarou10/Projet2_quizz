@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Exception/NotFoundException.php';
+require_once 'Class/NotFoundException.php';
 require_once 'Modele/connexion.php';
 
 if (!empty($_GET['action'])) {

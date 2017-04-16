@@ -16,7 +16,9 @@ function getQst($id) {
     global $bdd;
 
     $req2 = $bdd->prepare(
-        'SELECT * FROM questions q INNER JOIN reponses r ON q.question_id = r.questions_id WHERE q.quizz_id = :id'
+        'SELECT * FROM questions q 
+          INNER JOIN reponses r ON q.question_id = r.questions_id   
+          WHERE q.quizz_id = :id'
     );
     $req2->bindParam(':id', $id, PDO::PARAM_INT);
     $req2->execute();
@@ -78,4 +80,30 @@ function getBonnesReponses($id) {
 
     return $getGoodAns;
 
+}
+
+function sendIp($ip,$id) {
+    global $bdd;
+
+    $req = $bdd->prepare(
+        'INSERT into user (adresse_ip,quizz_id) VALUES (:ip,:id)');
+        $req->bindParam(':ip', $ip, PDO::PARAM_STR);
+        $req->bindParam(':id', $id, PDO::PARAM_INT);
+        $req->execute();
+
+        return $req;
+}
+
+function verifIp($ip,$id) {
+    global $bdd;
+
+    $req = $bdd->prepare(
+        'SELECT COUNT(*) id FROM user WHERE adresse_ip = :ip AND quizz_id = :id');
+        $req->bindParam(':ip',$ip,PDO::PARAM_STR);
+        $req->bindParam(':id',$id,PDO::PARAM_INT);
+        $req->execute();
+
+        $getIp = $req->fetchAll();
+
+        return $getIp;
 }
