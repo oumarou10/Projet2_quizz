@@ -14,19 +14,11 @@
 
 	<p> Ceci est mon premier quizz alors <mark>soyez indulgents</mark> s'il vous plaît,j'apprends comment cela marche. <?= 'oici ton adresse IP:'.$_SERVER['REMOTE_ADDR'];?></p>
 
- <?php
-
-
-  foreach ($allQuiz as $quiz)
-  {
-   ?>
+  <?php foreach ($allQuiz as $quiz):?>
       <div>
           <h2><?= $quiz['titre']; ?> <a href="?action=lesQuizz&&id=<?= $quiz['quizz_id']; ?>"> ici </a> </h2>
       </div>
-
-  <?php
-    }
- ?>
+  <?php endforeach;?>
 
         <footer style="background:darkred;">
 
