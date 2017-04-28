@@ -6,7 +6,7 @@ require_once 'Modele/connexion.php';
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 } else {
-    $action = 'accueil';
+    $action = 'inscription';
 }
 
 $path = 'Controller/'.$action.'.php';

@@ -8,4 +8,7 @@ if (isset($_GET['id'])){
 
 $questions = getQst($quizzId);
 
+$lastQuestionId = -5;
+$i = 0;
+
 require_once 'Vue/lesQuizz.php';

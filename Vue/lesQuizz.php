@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+$_SESSION['prenom'];
+
+$prenom = $_SESSION['prenom'];
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,14 +16,15 @@
     </head>
 
     <body>
-        <h1>Les questions</h1>
+        <h1>Les questions de <?=$prenom?></h1>
 
         <form action="?action=traitement&id=<?= $_GET['id']; ?>" method="POST">
             <?php
             $lastQuestionId = -5;
             $i = 0;
 
-            foreach ($questions as $question) {
+            foreach ($questions as $question)
+            {
                 if ($lastQuestionId != $question['question_id']) {
                     $i++;
 
@@ -22,8 +33,8 @@
                     <?php
                 }
 
-                if ($question['question_type'] == 0) {
-
+                if ($question['question_type'] == 0)
+                {
                     ?>
 
                     <input type="radio" name="question<?= $i ?>" id="reponse<?= $question['reponse_id'] ?>"
@@ -33,7 +44,7 @@
                     <?php
                 }
 
-                else
+                elseif ($question['question_type'] == 1)
                     {
                     ?>
                     <input type="checkbox" name="question<?= $i ?>[]" id="reponse<?= $question['reponse_id'] ?>"
@@ -41,6 +52,23 @@
                     <label for="reponse<?= $question['reponse_id'] ?>">  <?= $question['reponse'] ?></label>
                 <?php
                     }
+                elseif ($question['question_type'] == 2)
+                {
+                      ?>
+                    <input type="text" name="question<?= $i ?>" id="reponse<?= $question['reponse_id'] ?>"
+                           value="">
+
+                <?php
+                    }
+
+                else
+                {
+                    ?>
+                    <input type="text" name="question<?= $i ?>[]" id="reponse<?= $question['reponse_id'] ?>"
+                           value="">
+                <?php
+                }
+
 
                 $lastQuestionId = $question['question_id'];
             }

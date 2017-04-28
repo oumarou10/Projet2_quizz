@@ -51,7 +51,7 @@ function getNbQst($id){
     global $bdd;
 
     $req = $bdd->prepare(
-        'SELECT COUNT(question) AS nbQst FROM questions WHERE quizz_id = :id'
+        'SELECT COUNT(question) nbQst FROM questions WHERE quizz_id = :id'
     );
     $req->bindParam(':id', $id,PDO::PARAM_INT);
     $req->execute();
@@ -82,28 +82,16 @@ function getBonnesReponses($id) {
 
 }
 
-function sendIp($ip,$id) {
+function sendResultat($pseudo,$resulat,$id) {
     global $bdd;
 
     $req = $bdd->prepare(
-        'INSERT into user (adresse_ip,quizz_id) VALUES (:ip,:id)');
-        $req->bindParam(':ip', $ip, PDO::PARAM_STR);
-        $req->bindParam(':id', $id, PDO::PARAM_INT);
+        'INSERT INTO user (pseudo, resultat, quizz_id) VALUES (:pseudo,:resultat,:quizz_id)');
+        $req->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+        $req->bindParam(':resultat', $resulat, PDO::PARAM_INT);
+        $req->bindParam(':quizz_id', $id, PDO::PARAM_INT);
         $req->execute();
 
         return $req;
-}
 
-function verifIp($ip,$id) {
-    global $bdd;
-
-    $req = $bdd->prepare(
-        'SELECT COUNT(*) id FROM user WHERE adresse_ip = :ip AND quizz_id = :id');
-        $req->bindParam(':ip',$ip,PDO::PARAM_STR);
-        $req->bindParam(':id',$id,PDO::PARAM_INT);
-        $req->execute();
-
-        $getIp = $req->fetchAll();
-
-        return $getIp;
 }

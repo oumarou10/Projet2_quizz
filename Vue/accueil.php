@@ -10,7 +10,7 @@
     <div id="wrapper" style="text-align: center;background-color: aliceblue;border-radius: 20%">
 
 
-	<h1 style="text-align: center">Bonjour et bienvenue sur mon quizz! </h1>
+	<h1 style="text-align: center">Bonjour <?=$prenom?> et bienvenue sur mon quizz! </h1>
 
 	<p> Ceci est mon premier quizz alors <mark>soyez indulgents</mark> s'il vous plaît,j'apprends comment cela marche. <?= 'oici ton adresse IP:'.$_SERVER['REMOTE_ADDR'];?></p>
 
