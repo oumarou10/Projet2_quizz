@@ -47,6 +47,8 @@
 
     <h3> Ton score est de <?=ceil($average)?> %</h3>
 
+    <h3> Tes scores précédents <?= $showHistory ?> %</h3>
+
     <?= 'revenir à la page d\'accueil <a href="?action=accueil&&prenom=<?=$prenom;?>">ici</a>';?>
 
     </body>

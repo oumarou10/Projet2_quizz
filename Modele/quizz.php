@@ -95,3 +95,23 @@ function sendResultat($pseudo,$resultat,$id) {
         return $req;
 
 }
+
+function showHistory($pseudo,$id)
+{
+    global $bdd;
+
+    $req = $bdd->prepare(
+        'SELECT GROUP_CONCAT(resultats SEPARATOR " ")
+         FROM user
+         INNER JOIN quizz on user.quizz_id = quizz.quizz_id
+         WHERE pseudo = :pseudo
+         AND user.quizz_id = :id'
+    );
+    $req->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+    $req->bindParam(':id', $id, PDO::PARAM_INT);
+    $req->execute();
+
+    $history = $req->fetchAll();
+
+    return $history;
+}

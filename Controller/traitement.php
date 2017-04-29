@@ -68,10 +68,17 @@ for ($i = 0; $i <= $nbQst;$i++)
 
 $average = ($resultatQuizz / $nbQst) * 100;
 
-if (empty($errors) && isset($average))
+$showHistory = showHistory($prenom,$quizzId);
+
+if (is_array($showHistory))
+{
+    $showHistory = implode(' ',$showHistory);
+}
+
+/*if (empty($errors) && isset($average))
 {
   //  sendResultat($prenom,$average,$quizzId);
-}
+}*/
 
 $j = 1;
 $i = 0;
