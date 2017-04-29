@@ -52,6 +52,11 @@ for ($i = 0; $i <= $nbQst;$i++)
         {
             $reponsesSaisies['question'.$j] = implode(' ', $reponsesSaisies['question'.$j]);
         }
+
+        if (is_string($reponsesSaisies['question'.$j]))
+        {
+            $reponsesSaisies['question'.$j] = ucwords(strtolower(trim($reponsesSaisies['question'.$j])));
+        }
         if ($reponsesSaisies['question' . $j] == $getGoodAns[$i]['reponse'])
         {
             $resultatQuizz++;

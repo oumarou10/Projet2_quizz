@@ -18,6 +18,13 @@
                     echo '<font color="green"> Tu as bien répondu : ' . $reponsesSaisies['question' . $j] . ' </font> </br></br>';
                     $resultatQuizz++;
                 }
+
+                 else if (empty($reponsesSaisies['question' . $j]))
+                {
+                    echo  '<font color="red">Tu as laissé le champs vide </font> </br></br>';
+                    echo 'La bonne réponse est :'. $getGoodAns[$i]['reponse'].'</br></br>';
+                }
+
                 else
                 {
                     echo  '<font color="red">Tu as répondu : ' . $reponsesSaisies['question' . $j] . '</font> </br></br>';
@@ -27,7 +34,7 @@
             }
             else
             {
-                echo 'Tu n\'as pas saisi de réponse'. '</br></br>';
+                echo "Tu n'as coché de cases'. '</br></br>";
             }
             $j++;
             $i++;
@@ -40,7 +47,7 @@
 
     <h3> Ton score est de <?=ceil($average)?> %</h3>
 
-    <?= 'revenir à la page d\'accueil <a href="?action=accueil&prenom=$prenom">ici</a>';?>
+    <?= 'revenir à la page d\'accueil <a href="?action=accueil&&prenom=<?=$prenom;?>">ici</a>';?>
 
     </body>
 </html>
