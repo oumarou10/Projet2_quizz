@@ -6,6 +6,8 @@ $_SESSION['prenom'];
 
 $prenom = $_SESSION['prenom'];
 
+$prenom = strtoupper($prenom);
+
 ?>
 
 <!DOCTYPE html>

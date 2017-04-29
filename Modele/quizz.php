@@ -66,7 +66,7 @@ function getBonnesReponses($id) {
     global $bdd;
 
     $req = $bdd->prepare(
-        'SELECT GROUP_CONCAT(reponse) AS reponse
+        'SELECT GROUP_CONCAT(reponse SEPARATOR " ") AS reponse
          FROM reponses AS r 
          INNER JOIN questions AS q ON r.questions_id = q.question_id 
          INNER JOIN quizz ON quizz.quizz_id = q.quizz_id 
@@ -82,13 +82,13 @@ function getBonnesReponses($id) {
 
 }
 
-function sendResultat($pseudo,$resulat,$id) {
+function sendResultat($pseudo,$resultat,$id) {
     global $bdd;
 
     $req = $bdd->prepare(
-        'INSERT INTO user (pseudo, resultat, quizz_id) VALUES (:pseudo,:resultat,:quizz_id)');
+        'INSERT INTO user (pseudo, resultats, quizz_id) VALUES (:pseudo,:resultat,:quizz_id)');
         $req->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
-        $req->bindParam(':resultat', $resulat, PDO::PARAM_INT);
+        $req->bindParam(':resultat', $resultat, PDO::PARAM_INT);
         $req->bindParam(':quizz_id', $id, PDO::PARAM_INT);
         $req->execute();
 

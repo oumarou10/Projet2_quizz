@@ -8,15 +8,11 @@
 
     <?php foreach ($questions as $question)
     {
-        if ($lastQId != $question['question_id'])
+       if ($lastQId != $question['question_id'])
         {
             echo '<strong>'. $j .')'. $question['question'] .'</strong> </br></br>';
             if (isset($reponsesSaisies['question' . $j]))
             {
-                if(is_array($reponsesSaisies['question'.$j]))
-                {
-                    $reponsesSaisies['question'.$j] = implode(',', $reponsesSaisies['question'.$j]);
-                }
                 if ($reponsesSaisies['question' . $j] == $getGoodAns[$i]['reponse'])
                 {
                     echo '<font color="green"> Tu as bien répondu : ' . $reponsesSaisies['question' . $j] . ' </font> </br></br>';
@@ -39,14 +35,12 @@
 
         $lastQId = $question['question_id'];
     }
-    $average = ($resultatQuizz / $nbQst) * 100;
 
     ?>
 
-
     <h3> Ton score est de <?=ceil($average)?> %</h3>
 
-    <?= 'revenir à la page d\'accueil <a href="?action=accueil">ici</a>';?>
+    <?= 'revenir à la page d\'accueil <a href="?action=accueil&prenom=$prenom">ici</a>';?>
 
     </body>
 </html>
