@@ -4,9 +4,11 @@ session_start();
 
 if (isset($_POST['prenom']))
 {
-    $_SESSION['prenom'] = $_POST['prenom'];
-    $prenom = $_SESSION['prenom'];
+    $prenom = $_POST['prenom'];
     $prenom = ucfirst(strtolower(trim($prenom)));
+    $_SESSION['prenom'] = $prenom;
+    $prenom = $_SESSION['prenom'];
+
 }
 
 elseif (isset($_GET['prenom']))
@@ -24,5 +26,3 @@ require_once 'Modele/quizz.php';
 $allQuiz = getQuizz();
 
 require_once 'Vue/accueil.php';
-
-?>

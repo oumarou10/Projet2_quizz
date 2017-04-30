@@ -4,6 +4,7 @@
         <title> Reponses </title>
     </head>
     <body>
+
         <h1>Voici les bonnes réponses</h1>
 
     <?php foreach ($questions as $question)
@@ -47,9 +48,9 @@
 
     <h3> Ton score est de <?=ceil($average)?> %</h3>
 
-    <h3> Tes scores précédents <?= $showHistory ?> %</h3>
+    <?=$showHistory;?>
 
-    <?= 'revenir à la page d\'accueil <a href="?action=accueil&&prenom=<?=$prenom;?>">ici</a>';?>
+    <?= 'revenir à la page d\'accueil <a href="?action=accueil?>">ici</a>';?>
 
     </body>
 </html>

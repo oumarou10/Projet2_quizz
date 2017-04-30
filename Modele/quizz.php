@@ -101,7 +101,7 @@ function showHistory($pseudo,$id)
     global $bdd;
 
     $req = $bdd->prepare(
-        'SELECT GROUP_CONCAT(resultats SEPARATOR " ")
+        'SELECT GROUP_CONCAT(resultats SEPARATOR " ") AS resultat
          FROM user
          INNER JOIN quizz on user.quizz_id = quizz.quizz_id
          WHERE pseudo = :pseudo
@@ -115,3 +115,25 @@ function showHistory($pseudo,$id)
 
     return $history;
 }
+
+function countHistory($pseudo,$id)
+{
+    global $bdd;
+
+    $req = $bdd->prepare(
+        'SELECT COUNT(*) AS nbHistory
+         FROM user
+         INNER JOIN quizz ON user.quizz_id = quizz.quizz_id
+         WHERE user.pseudo = :pseudo 
+         AND user.quizz_id = :id'
+    );
+    $req->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+    $req->bindParam(':id', $id, PDO::PARAM_INT);
+    $req->execute();
+
+    $nbHistory = $req->fetchAll();
+
+    return $nbHistory;
+
+}
+

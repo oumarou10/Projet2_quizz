@@ -35,8 +35,6 @@ for ($i = 1; $i <= $nbQst;$i++)
     }
 }
 
-
-
 $resultatQuizz = 0;
 
 $reponsesSaisies = [];
@@ -68,17 +66,25 @@ for ($i = 0; $i <= $nbQst;$i++)
 
 $average = ($resultatQuizz / $nbQst) * 100;
 
-$showHistory = showHistory($prenom,$quizzId);
+$countHistory = countHistory($prenom,$quizzId);
 
-if (is_array($showHistory))
+$nbHistory = $countHistory[0]['nbHistory'];
+
+if (empty($errors) && isset($average))
 {
-    $showHistory = implode(' ',$showHistory);
+    $showHistory = showHistory($prenom,$quizzId);
+    sendResultat($prenom,$average,$quizzId);
 }
 
-/*if (empty($errors) && isset($average))
+if ($nbHistory == 0)
 {
-  //  sendResultat($prenom,$average,$quizzId);
-}*/
+    $showHistory = "Tu n'as pas encore d'historique </br>";
+}
+
+else
+{
+    $showHistory = 'Voici ton historique de points : '.$showHistory[0]['resultat'].'</br>';
+}
 
 $j = 1;
 $i = 0;
