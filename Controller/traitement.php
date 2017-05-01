@@ -83,7 +83,7 @@ if ($nbHistory == 0)
 
 else
 {
-    $showHistory = 'Voici ton historique de points : '.$showHistory[0]['resultat'].'</br>';
+    $showHistory = 'Voici ton historique de points sur ce quizz: '.$showHistory[0]['resultat'].'</br>';
 }
 
 $j = 1;

@@ -1,5 +1,13 @@
 <?php
 
+session_start();
+
+$_SESSION['prenom'];
+
+$prenom = $_SESSION['prenom'];
+
+$prenom = strtoupper($prenom);
+
 require_once 'Modele/quizz.php';
 
 if (isset($_GET['id'])){

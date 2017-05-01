@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Quizz Projet</title>
 </head>
 
 <body>
 
-    <div id="wrapper" style="text-align: center;background-color: aliceblue;border-radius: 20%">
+    <div class="container" style="text-align: center;background-color: aliceblue;border-radius: 10%; margin:18% auto;padding:30">
 
+        <div class="col-lg-12">
+	       <h1 style="text-align: center">Bonjour et bienvenue sur mon quizz! </h1>
+        </div>
 
-	<h1 style="text-align: center">Bonjour et bienvenue sur mon quizz! </h1>
+        <div>
 
-	<p> Ceci est mon premier quizz alors <mark>soyez indulgents</mark> s'il vous plaît,j'apprends comment cela marche.</p>
+            <form action="?action=accueil" class="form-group" method="POST">
+                
+                    <div class="form-group" >
+                        <label> Votre Prénom :</label>
+                        <input type="text" name="prenom" class="form-control btn-xs-12" id="prenom">
+                    </div>
+                   
+                    <div class="form-group">
+                        <button type="submit" class = "btn btn-default btn-xs-12" name="envoyer"> Let's go </button>
+                    </div>
+               
+            </form>
 
-    <form action="?action=accueil" method="POST">
-
-        <label> Votre Prénom :</label>
-
-        <input type="text" name="prenom" id="prenom">
-
-        <button type="submit" name="envoyer"> Let's go </button>
-
-    </form>
+        </div>
 
         <footer style="background:darkred;">
 
@@ -32,6 +41,5 @@
 
     </div>
 
-</form>
 </body>
 </html>
