@@ -10,11 +10,22 @@ $prenom = strtoupper($prenom);
 
 require_once 'Modele/quizz.php';
 
+require_once 'Class/Connection.php';
+
+require_once 'Class/Question.php';
+
 if (isset($_GET['id'])){
     $quizzId = (int) $_GET['id'];
 }
 
-$questions = getQst($quizzId);
+$bdd = Connection::getConnection();
+
+$question = new Question();
+
+$questions = $question->getQst($bdd, $quizzId);
+
+$all = $question->getQuestions($bdd, $quizzId);
+
 
 $lastQuestionId = -5;
 $i = 0;

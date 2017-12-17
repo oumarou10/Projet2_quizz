@@ -4,36 +4,36 @@
 
         <?php foreach ($questions as $question) :
 
-            if ($lastQuestionId != $question['question_id']) {
+            if ($lastQuestionId != $question->getId()) {
                 $i++;
 
                 ?>
-                <p> <strong><?= $i ?>) <?= $question['question'] ?></strong>  </p>
+                <p> <strong><?= $i ?>) <?= $question->getQuestion() ?></strong>  </p>
                 <?php
             }
 
-            if ($question['question_type'] == 0) {
+            if ($question->getQuestiontype() == 0) {
                 ?>
                 <div>
-                    <input type="radio" class="form-group" name="question<?= $i ?>" id="reponse<?= $question['reponse_id'] ?>" value="<?= $question['reponse'] ?>">
-                    <label for="reponse<?= $question['reponse_id'] ?>">  <?= $question['reponse'] ?></label>
+                    <input type="radio" class="form-group" name="question<?= $i ?>" id="reponse<?= $question->reponse_id ?>" value="<?= $question->reponse ?>">
+                    <label for="reponse<?= $question->reponse_id ?>">  <?= $question->reponse ?></label>
                 </div>
                 <?php
             }
 
-            elseif ($question['question_type'] == 1) {
+            elseif ($question->getQuestiontype() == 1) {
                 ?>
                 <div>
-                    <input type="checkbox" class="form-group" name="question<?= $i ?>[]" id="reponse<?= $question['reponse_id'] ?>" value="<?= $question['reponse'] ?>">
-                    <label for="reponse<?= $question['reponse_id'] ?>">  <?= $question['reponse'] ?>
+                    <input type="checkbox" class="form-group" name="question<?= $i ?>[]" id="reponse<?= $question->reponse_id ?>" value="<?= $question->reponse ?>">
+                    <label for="reponse<?= $question->reponse_id ?>">  <?= $question->reponse ?>
                     </label>
                 </div>
                 <?php
             }
-            elseif ($question['question_type'] == 2) {
+            elseif ($question->getQuestiontype() == 2) {
                 ?>
                 <div>
-                    <input type="text" class="form-group" name="question<?= $i ?>" id="reponse<?= $question['reponse_id'] ?>" value="">
+                    <input type="text" class="form-group" name="question<?= $i ?>" id="reponse<?= $question->reponse_id ?>" value="">
                 </div>
 
                 <?php
@@ -42,12 +42,12 @@
             else {
                 ?>
                 <div>
-                    <input type="text" class="form-group" name="question<?= $i ?>[]" id="reponse<?= $question['reponse_id'] ?>" value="">
+                    <input type="text" class="form-group" name="question<?= $i ?>[]" id="reponse<?= $question->reponse_id ?>" value="">
                 </div>
                 <?php
             }
 
-            $lastQuestionId = $question['question_id'];
+            $lastQuestionId = $question->getId();
 
 
         endforeach; ?>
