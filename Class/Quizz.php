@@ -8,13 +8,13 @@
 
 class Quizz
 {
-    private $id;
+    private $quizz_id;
 
     private $titre;
 
     public function getId()
     {
-        return $this->id;
+        return $this->quizz_id;
     }
 
     public function setId($id)
