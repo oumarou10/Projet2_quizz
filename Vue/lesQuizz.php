@@ -2,7 +2,7 @@
 
     <form action="?action=traitement&id=<?= $_GET['id']; ?>" class="form" method="POST">
 
-        <?php foreach ($questions as $question) {
+        <?php foreach ($questions as $question) :
 
             if ($lastQuestionId != $question['question_id']) {
                 $i++;
@@ -48,8 +48,9 @@
             }
 
             $lastQuestionId = $question['question_id'];
-            }
-            ?>
+
+
+        endforeach; ?>
 
         <div>
             <button type="submit" class = "btn btn-default btn-lg" name="envoyer"> Envoyer</button>

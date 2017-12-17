@@ -1,16 +1,8 @@
 <?php
 
-require 'connexion.php';
+require_once 'Class/Connection.php';
 
-function getQuizz() {
-    global $bdd;
-
-    $requete = $bdd->query('SELECT * FROM quizz');
-
-    $allQuizz = $requete->fetchAll();
-
-    return $allQuizz;
-}
+$bdd = Connection::getConnection();
 
 function getQst($id) {
     global $bdd;

@@ -10,7 +10,7 @@
 
 <body>
 
-    <div class="container" style="background-color:aliceblue;border-radius: 10%; margin:13% auto; text-align: center";>
+    <div class="container">
 
         <?= $contenu ?>
 

@@ -9,7 +9,7 @@
         <form action="?action=accueil" class="form-group" method="POST">
                 
             <div class="form-group" >
-                <label> Votre Prénom :</label>
+                <label for="prenom"> Votre Prénom :</label>
                 <input type="text" name="prenom" class="form-control btn-xs-12" id="prenom">
             </div>
                    

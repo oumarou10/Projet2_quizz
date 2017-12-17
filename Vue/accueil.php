@@ -6,8 +6,12 @@
         
     <?php foreach ($allQuiz as $quiz):?>
         <div class="col-lg-4 col-md-6 col-xs-12">
-                <h2><?= $quiz['titre']; ?> </h2>
-                <p><a class="btn btn-link" href="?action=lesQuizz&&id=<?= $quiz['quizz_id']; ?>"> ici </a></p>
+            <div style="text-align : center">
+                <h2><?= $quiz->getTitre(); ?> </h2>
+            </div>
+            <div style="text-align : center">
+                <p><a class="btn btn-primary btn-lg active" href="?action=lesQuizz&&id=<?= $quiz->getId(); ?>"> ici </a></p>
+            </div>
         </div>
     <?php endforeach;?>
 

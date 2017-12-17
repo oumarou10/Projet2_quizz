@@ -4,8 +4,8 @@
         <h1>Voici les bonnes réponses</h1>
     </div>
 
-    <?php foreach ($questions as $question) {
-
+    <?php foreach ($questions as $question) :?>
+        <?php
         if ($lastQId != $question['question_id']) {
 
             echo '<strong>'. $j .')'. $question['question'] .'</strong> </br></br>';
@@ -36,9 +36,9 @@
             }
 
             $lastQId = $question['question_id'];
-        }
-
         ?>
+
+    <?php endforeach ?>
         
     <div>
         
