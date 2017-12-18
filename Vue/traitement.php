@@ -4,8 +4,8 @@
         <h1>Voici les bonnes réponses</h1>
     </div>
 
-    <?php foreach ($questions as $question) :?>
-        <?php
+    <?php foreach ($questions as $question)
+
         if ($lastQId != $question['question_id']) {
 
             echo '<strong>'. $j .')'. $question['question'] .'</strong> </br></br>';
@@ -36,15 +36,14 @@
             }
 
             $lastQId = $question['question_id'];
-        ?>
 
-    <?php endforeach ?>
+    endforeach ?>
         
     <div>
         
         <h3> Ton score est de <?=ceil($average)?> %</h3>
 
-        <p> <?=$showHistory;?></p>
+        <h4> <?=$showHistory;?></h4>
 
         <p><?= 'Pour revenir à la page d\'accueil <a href="?action=accueil">ici</a>';?></p>
             

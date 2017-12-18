@@ -37,7 +37,6 @@ for ($i = 1; $i <= $nbQst;$i++)
 
 $resultatQuizz = 0;
 
-$reponsesSaisies = [];
 $reponsesSaisies = $_POST;
 $j = 1;
 
@@ -76,15 +75,7 @@ if (empty($errors) && isset($average))
     sendResultat($prenom,$average,$quizzId);
 }
 
-if ($nbHistory == 0)
-{
-    $showHistory = "Tu n'as pas encore d'historique </br>";
-}
-
-else
-{
-    $showHistory = 'Voici ton historique de points sur ce quizz: '.$showHistory[0]['resultat'].'</br>';
-}
+$showHistory = ($nbHistory == 0) ? "Tu n'as pas encore d'historique </br>" : 'Voici ton historique de points sur ce quizz: '.$showHistory[0]['resultat'].'</br>' ;
 
 $j = 1;
 $i = 0;
