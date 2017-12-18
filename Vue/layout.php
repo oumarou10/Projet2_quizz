@@ -10,11 +10,35 @@
 
 <body>
 
-    <div class="container">
+    <div class="container" style="height: 610px">
+
+        <header style="background: beige; border-radius: 15px;">
+
+            <div id="conteneur"  style="padding-top: 20px; display: flex; justify-content: space-around">
+
+                <div id="image" style="/*margin: 0px 30px; padding: 20px">
+                    <img src="https://www.quizz.biz/uploads/quizz/713631/orig/1.jpg?1479715536" width="120px" height="100px">
+                </div>
+
+                <div id="text_presentation" style="padding-top: 60px">
+                    <h4> Venez vous divertir sur des quizz divers et variés</h4>
+                </div>
+
+            </div>
+
+            <hr style="border: 0; height: 0; box-shadow: 0 0 2px 1px black;">
+
+        </header>
 
         <?= $contenu ?>
 
     </div>
+
+    <footer style="background:grey; height: 160px; text-align: center; padding-top: 50px">
+
+            <p style="color: aliceblue;"> Copyright © 2017. Tous droits réservés. </p>
+
+    </footer>
 
 </body>
 </html>

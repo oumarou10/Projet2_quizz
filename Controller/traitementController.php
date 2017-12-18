@@ -80,4 +80,4 @@ $showHistory = ($nbHistory == 0) ? "Tu n'as pas encore d'historique </br>" : 'Vo
 $j = 1;
 $i = 0;
 
-require_once 'Vue/traitement.php';
+require_once 'Vue/traitementVue.php';

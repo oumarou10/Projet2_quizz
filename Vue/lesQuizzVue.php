@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-    <form action="?action=traitement&id=<?= $_GET['id']; ?>" class="form" method="POST">
+    <form action="?action=traitementController&id=<?= $_GET['id']; ?>" class="form" method="POST">
 
         <?php foreach ($questions as $question) :
 

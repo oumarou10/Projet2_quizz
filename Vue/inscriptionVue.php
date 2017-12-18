@@ -6,7 +6,7 @@
 
     <div>
 
-        <form action="?action=accueil" class="form-group" method="POST">
+        <form action="?action=accueilController" class="form-group" method="POST">
                 
             <div class="form-group" >
                 <label for="prenom"> Votre Prénom :</label>
@@ -21,12 +21,6 @@
         </form>
 
     </div>
-
-    <footer style="background:darkred;">
-
-        <p style="color: aliceblue;"> Copyright © 2017. Tous droits réservés. </p>
-
-    </footer>
 
 <?php $contenu = ob_get_clean(); ?>
 

@@ -28,4 +28,4 @@ $quizzAll = new Quizz();
 
 $allQuiz = $quizzAll->getAll($bdd);
 
-require_once 'Vue/accueil.php';
+require_once 'Vue/accueilVue.php';

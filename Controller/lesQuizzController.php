@@ -30,4 +30,4 @@ $all = $question->getQuestions($bdd, $quizzId);
 $lastQuestionId = -5;
 $i = 0;
 
-require_once 'Vue/lesQuizz.php';
+require_once 'Vue/lesQuizzVue.php';

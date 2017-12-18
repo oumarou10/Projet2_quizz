@@ -11,4 +11,4 @@ if (isset($_POST['prenom']))
 
 require_once 'Modele/connexion.php';
 
-require_once 'Vue/inscription.php';
+require_once 'Vue/inscriptionVue.php';

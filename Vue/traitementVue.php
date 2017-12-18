@@ -45,7 +45,7 @@
 
         <h4> <?=$showHistory;?></h4>
 
-        <p><?= 'Pour revenir à la page d\'accueil <a href="?action=accueil">ici</a>';?></p>
+        <p><?= 'Pour revenir à la page d\'accueil <a href="?action=accueilController">ici</a>';?></p>
             
     </div>
 
